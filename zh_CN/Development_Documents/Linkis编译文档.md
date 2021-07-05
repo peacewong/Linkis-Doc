@@ -2,13 +2,15 @@
 
 ## 目录
 
-- [1.全量编译 Linkis](#1全量编译-linkis)
+- [1. 全量编译 Linkis](#1全量编译-linkis)
 
-- [2.编译单个模块](#2编译单个模块)
+- [2. 编译单个模块](#2编译单个模块)
 
 - [3. 编译某个引擎](#3-编译某个引擎)
 
 - [4. 如何修改Linkis的依赖的Hadoop、Hive、Spark版本](#4-如何修改linkis的依赖的hadoophivespark版本)
+
+- [5. 编译前端管理台](https://github.com/WeBankFinTech/Linkis-Doc/blob/master/zh_CN/Development_Documents/Web/Build.md)
 
 ## 1.全量编译 Linkis
 
@@ -115,6 +117,25 @@
         <jdk.compile.version>1.8</jdk.compile.version>
               
     </properties>
+```
+
+**请注意：如果你的hadoop版本是hadoop3，需要修改linkis-hadoop-common的pom文件**
+因为在hadoop2.8以下的时候，hdfs相关的class是在hadoop-hdfs模块中的，但是在hadoop 3.X中将对应的class移动到了模块hadoop-hdfs-client当中，您需要修改下这个文件：
+
+```
+pom:Linkis/linkis-commons/linkis-hadoop-common/pom.xml
+修改依赖hadoop-hdfs为hadoop-hdfs-client：
+ <dependency>
+            <groupId>org.apache.hadoop</groupId>
+            <artifactId>hadoop-hdfs</artifactId>  <!-- 只需要将该行替换即可，替换为 <artifactId>hadoop-hdfs-client</artifactId>-->
+            <version>${hadoop.version}</version>
+            ...
+ 将hadoop-hdfs修改为：
+  <dependency>
+            <groupId>org.apache.hadoop</groupId>
+            <artifactId>hadoop-hdfs-client</artifactId>
+            <version>${hadoop.version}</version>
+            ...
 ```
 
 #### 如何修改 Linkis 依赖的 Spark、Hive 版本？

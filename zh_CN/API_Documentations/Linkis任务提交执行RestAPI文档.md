@@ -156,7 +156,7 @@
 
 - 接口 `/api/rest_j/v1/entrance/${execID}/kill`
 
-- 提交方式 `POST`
+- 提交方式 `GET`
 
 ```json
 {
