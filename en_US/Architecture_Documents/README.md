@@ -12,7 +12,7 @@ The specific responsibilities of each category are as follows:
 
 The following is a directory listing of Linkis1.0 architecture documents:
 
-1. The characteristics of Linkis1.0's architecture , please read [The difference between Linkis1.0 and Linkis0.x](The difference between Linkis1.0 and Linkis0.x).
-2. Linkis1.0 public enhancement service related documents, please read [Public Enhancement Service](Public_Enhancement_Services\README.md).
-3. Linkis1.0 microservice governance related documents, please read [Microservice Governance](Microservice_Governance_Services\README.md).
-4. Linkis1.0 computing governance service related documents, please read [Computing Governance Service](Computation_Governance_Services\README.md).
+1. The characteristics of Linkis1.0's architecture , please read [The difference between Linkis1.0 and Linkis0.x](DifferenceBetween1.0&0.x.md).
+2. Linkis1.0 public enhancement service related documents, please read [Public Enhancement Service](Public_Enhancement_Services/README.md).
+3. Linkis1.0 microservice governance related documents, please read [Microservice Governance](Microservice_Governance_Services/README.md).
+4. Linkis1.0 computing governance service related documents, please read [Computation Governance Service](Computation_Governance_Services/README.md).
