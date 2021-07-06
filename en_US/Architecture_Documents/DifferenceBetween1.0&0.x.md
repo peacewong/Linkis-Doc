@@ -10,9 +10,9 @@
 4. **Improved advanced computing strategy capability**, add Orchestrator to implement rich computing task management strategies, and support tag-based analysis and orchestration.  
 ## 3. Service Comparison
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Please refer to the following two pictures:  
-![Linkis0.X Service List](https://github.com/WeBankFinTech/Linkis/blob/dev-1.0.0/images/zh_CN/Linkis1.0/installation/Linkis0.X-services-list.png)  
+![Linkis0.X Service List](./../Images/Architecture/Linkis0.X-services-list.png)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The list of Linkis1.0 microservices is as follows:  
-![Linkis1.0 Service List](https://github.com/WeBankFinTech/Linkis/blob/dev-1.0.0/images/zh_CN/Linkis1.0/installation/Linkis1.0-services-list.png)  
+![Linkis1.0 Service List](./../Images/Architecture/Linkis1.0-services-list.png)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;From the above two figures, Linkis1.0 divides services into three types of services: Computing Governance (CG)/Micro Service Governance (MG)/Public Enhanced Service (PS). among them:  
 1. A major change in computing governance is that Entrance and EngineConnManager services are no longer related to engines. To implement a new engine, only the EngineConnPlugin plug-in needs to be implemented. EngineConnPluginServer will dynamically load the EngineConnPlugin plug-in to achieve engine hot-plug update;
 2. Another major change in computing governance is that LinkisManager, as the management brain of Linkis, abstracts and defines AppManager (application management), ResourceManager (resource management) and LabelManager (label management);
@@ -27,13 +27,13 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EngineConnPlugin is mainly used to reduce the cost of access and deployment of new computing storage. It truly enables users to “just need to implement a class to connect to a new computing storage engine; just execute a script to quickly deploy a new engine ".  
 ### 5.1 New Engine Implementation Comparison
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The following are the relevant interfaces and classes that the user Linkis0.X needs to implement to implement a new engine:  
-![Linkis0.X How to implement a brand new engine](https://github.com/WeBankFinTech/Linkis/blob/dev-1.0.0/images/zh_CN/Linkis1.0/architecture/Linkis0.X-NewEngine-architecture.png)  
+![Linkis0.X How to implement a brand new engine](./../Images/Architecture/Linkis0.X-NewEngine-architecture.png)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The following is Linkis 1.0.0, which implements a new engine, the interfaces and classes that users need to implement:  
-![Linkis1.0 How to implement a brand new engine](https://github.com/WeBankFinTech/Linkis/blob/dev-1.0.0/images/zh_CN/Linkis1.0/architecture/Linkis1.0-NewEngine-architecture.png)  
+![Linkis1.0 How to implement a brand new engine](./../Images/Architecture/Linkis1.0-NewEngine-architecture.png)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Among them, EngineConnResourceFactory and EngineLaunchBuilder are not required to implement interfaces, and only EngineConnFactory is required to implement interfaces.  
 ### 5.2 New engine startup process
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EngineConnPlugin provides the Server service to start and load all engine plug-ins. The following is a new engine startup that accesses the entire process of EngineConnPlugin-Server:  
-![Linkis Engine start process](https://github.com/WeBankFinTech/Linkis/blob/dev-1.0.0/images/zh_CN/Linkis1.0/architecture/Linkis1.0-newEngine-initialization.png)  
+![Linkis Engine start process](./../Images/Architecture/Linkis1.0-newEngine-initialization.png)  
 ## 6. Introduction To Linkis EngineConn
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EngineConn, the original Engine module, is the actual unit for Linkis to connect and interact with the underlying computing storage engine, and is the basis for Linkis to provide computing and storage capabilities.  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EngineConn of Linkis1.0 is mainly composed of EngineConn and Executor. among them:  
@@ -47,4 +47,4 @@
 4. The advantage of using the separation of Executor and EngineConn is that it can avoid the Receiver coupling business logic, and only retains the RPC communication function. Distribute services in multiple Executor modules, and abstract them into several categories of engines: interactive computing engines, streaming engines, disposable engines, etc., which may be used, and build a unified engine framework for later expansion.
 In this way, different types of engines can respectively load the required capabilities according to their needs, which greatly reduces the redundancy of engine implementation.  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;As shown below:  
-![Linkis EngineConn Architecture diagram](https://github.com/WeBankFinTech/Linkis/blob/dev-1.0.0/images/zh_CN/Linkis1.0/architecture/Linkis1.0-EngineConn-architecture.png)
+![Linkis EngineConn Architecture diagram](./../Images/Architecture/Linkis1.0-EngineConn-architecture.png)
