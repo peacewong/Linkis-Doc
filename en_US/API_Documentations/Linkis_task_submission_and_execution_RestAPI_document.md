@@ -101,7 +101,7 @@ For more information about the Linkis Restful interface specification, please re
 
 - The request parameter fromLine refers to the number of lines from which to get, and size refers to the number of lines of logs that this request gets
 
-- Return example, where the returned fromLine needs the parameters of the next log request
+- Return example, where the returned fromLine needs to be used as a parameter for the next request of this interface
 
 ```json
 {
@@ -157,8 +157,6 @@ For more information about the Linkis Restful interface specification, please re
 - Interface `/api/rest_j/v1/entrance/${execID}/kill`
 
 - Submission method `POST`
-
-- Return example, where the returned fromLine needs the parameters of the next log request
 
 ```json
 {

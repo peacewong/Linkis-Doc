@@ -5,4 +5,4 @@ Linkis1.0 has been refactored and optimized on the basis of Linkix0.x, and it is
 
 2. Linkis1.0 provides a JDBC interface. You need to use JDBC to access Linkis. Please read [Task Submit and Execute JDBC API Document](JDBC_API.md).
 
-3. Linkis1.0 provides the Rest interface. If you need to develop upper-level applications on the basis of Linkis, please read [Task Submit and Execute Rest API Document](Linkis task submission and execution RestAPI document.md).
+3. Linkis1.0 provides the Rest interface. If you need to develop upper-level applications on the basis of Linkis, please read [Task Submit and Execute Rest API Document](Linkis_task_submission_and_execution_RestAPI_document.md).
