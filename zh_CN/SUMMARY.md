@@ -36,8 +36,6 @@
             * [LabelManager 架构设计](Architecture_Documents/Computation_Governance_Services/LinkisManager/LabelManager.md)
         * [Linkis1.0 EngineConnManager 架构设计](Architecture_Documents/Computation_Governance_Services/EngineConnManager/README.md)
         * [Linkis1.0 EngineConn 架构设计](Architecture_Documents/Computation_Governance_Services/EngineConn/README.md)
-            * [EngineConn 核心类图](Architecture_Documents/Computation_Governance_Services/EngineConn/EngineConn_Core_Classes.md)
-            * [Executor 核心类图](Architecture_Documents/Computation_Governance_Services/EngineConn/Executor_Core_Classes.md)
         * [Linkis1.0 EngineConnPlugin 架构设计](Architecture_Documents/Computation_Governance_Services/EngineConnPlugin/README.md)
     * [Linkis1.0 公共增强服务架构设计](Architecture_Documents/Public_Enhancement_Services/README.md)
         * [DataSource(统一数据源) 架构设计文档](Architecture_Documents/Public_Enhancement_Services/DataSource.md)
