@@ -11,7 +11,7 @@
 <dependency>
   <groupId>com.webank.wedatasphere.linkis</groupId>
   <artifactId>linkis-computation-client</artifactId>
-  <version>1.0.0-RC1</version>
+  <version>1.0.0</version>
 </dependency>
 ```
 
