@@ -4,15 +4,14 @@ Thank you very much for contributing to the Linkis project! Before participating
 
 ## 1. Contribution category
 
-### 1.1 Bug feedback and repair
+### 1.1 Bug feedback and fix
 
 We suggest that whether it is bug feedback or repair, you should create an issue first to describe the status of the bug in detail, so as to help the community to find and review issues and codes through issue records. Bug feedback issues usually need to include a complete description
-**Bug** information and reproducible scenarios, so that the community can quickly locate the cause of the bug and fix it. contain
-The opened Issues of the #bug label all need to be fixed.
+**Bug** information and reproducible scenarios, so that the community can quickly locate the cause of the bug and fix it. Opened issues that contain #bug label all need to be fixed.
 
 ### 1.2 Functional communication, implementation and refactoring
 
-In the communication process, a detailed description of the details, mechanisms and usage scenarios of the new function (or refactoring) can promote it better and faster.
+In the communication process, please elaborate the details, mechanisms and using scenarios of the new function(or refactoring). This can promote the function(or refactoring) to be implemented better and faster.
 If you plan to implement a major feature (or refactoring), be sure to communicate with the team through **Issue** or other methods, so that everyone can move forward in the most efficient way. An open Issue containing the #feature tag means that there are new functions need to be implemented. And open issues including #Enhancement tags always means that needs to be improved for refactoring.
 
 
@@ -28,17 +27,17 @@ Linkis User Manual Documents are maintained in the Linkis-Doc project of github,
 
 ### 2.1 Branch structure
 
-The Linkis source code may produce some temporary branches, but there are only three branches as followed that are really meaningful:
+The Linkis source code may contain some temporary branches, but there are only three branches as followed that are really meaningful:
 
 ```
-master: The source code of the last stable release, and occasionally hotfix submissions;
+master: The source code of the last stable release, and occassionally may have several hotfix submissions
 branch-0.10.0: The latest stable version
-dev-1.0.0: Main development branch;
+dev-1.0.0: Main development branch
 ```
 
 ### 2.2 Development Guidelines
 
-Linkis front-end and back-end code share the same code base, but they are separated in development. Before embarking on development, please fork a copy of Linkis project to your own Github Repositories. When developing, please do it based on your own Github Repositories.
+Linkis front-end and back-end code share the same code repository, but they are separated in development. Before embarking on development, please fork a copy of Linkis project to your own Github Repositories. When developing, please do it based on your own Github Repositories.
 
 We recommend cloning the dev-1.0.0 branch for development, so there will be much less conflicts on merging when submitting a PR to the Linkis main project
 Much smaller
@@ -51,7 +50,7 @@ git clone https://github.com/yourname/Linkis.git --branch dev-1.0.0
 
 The user configuration is under the project root directory /config/, the project startup script and the upgrade patch script are under the project root directory /bin/.
 The back-end code and core configuration are in the server/ directory, and the log is in the project root directory /log/. 
-Note: All records referred to the directory of the project root item, refer to the directory configured by the environment variable LINKIS_HOME, and environment variables need to be configured on development using IDE.
+The root directory of the project mentioned here refers to the directory configured by the environment variable LINKIS_HOME, and the environment variable needs to be configured during the development of the IDE.
 For example, Idea regarding the priority of environment variable loading from  high to low: Environment configured in Run/Debug Configurations
 variables —> System environment variables cached by the IDE.
 
@@ -114,8 +113,8 @@ Modify the application-linkis.yml file in the conf directory and the properties 
 **2.2.1.5** Packaging
 
 ```
-1. To open the complete release package, you need to modify the version in /assembly/src/main/assembly/assembly.xml in the root directory, and then execute in the root directory: mvn clean package;
-2. Open the package of each module and execute mvn clean package directly in the module directory.
+1. To package the project, you need to modify the version in /assembly/src/main/assembly/assembly.xml in the root directory, and then execute the following command in the root directory: mvn clean package;
+To package a single module, simply run mvn clean package directly in each module.
 ```
 ### 2.3 Pull Request Guidelines
 
@@ -130,10 +129,7 @@ All submissions to the dev-1.0.0 branch need to go through at least one review b
 ```
 ### 2.4 Review Standard
 
-Before contributing code, you can find out what kind of submissions are popular in Review. Simply put, if one item
-Submission can bring as many gains as possible and as few side effects or risks as possible, the higher the probability of it being merged, Review’s
-The speed will be faster. Submissions with high risk and low value are almost impossible to be merged, and may be rejected.
-There is no chance for Review.
+Before contributing code, you can find out what kind of submissions are popular in Review. Simply put, if a submission can bring as many gains as possible and as few side effects or risks as possible, then it will be reviewd and merged first. Submissions with high risk and low value are almost impossible to be merged, and may be rejected without even a chance to review. 
 
 **2.4.1** Gain
 
@@ -167,11 +163,11 @@ If you need to make changes by the submitter, please clearly state all the conte
 If a PR is found to have brought new problems after the merger, the Reviewer needs to contact the PR author and communicate to resolve the problem.
 Question; if the PR author cannot be contacted, the Reviewer needs to restore the PR
 ```
-## Three, advanced contribution
+## 3. advanced contribution
 
 ### 3.1 About Committers (Collaborators)
 
-**3.1.1** How to become **Committer**
+**3.1.1** How to become a **committer**
 
 If you have had a valuable PR for the Linkis code and it has been merged, you can contact the core development team through the official WeChat group
 Team applied to be the Committer of the Linkis project; the core development team and other Committers will vote together to decide whether or not allow you to join. If you get enough votes, you will become a Committer for the Linkis project.
@@ -190,9 +186,7 @@ Can apply to be a member of Committee
 **3.2.1** How to become a **Committee** member
 
 
-If you are a Committer of the Linkis project, and all your contributions have been recognized by other Committee members
-Yes, you can apply to be a member of the Linkis Committee, and other Committee members will vote together to decide whether to allow
-You are allowed to join, and if unanimously approved, you will become a member of the Linkis Committee.
+If you are a Committer of the Linkis project, and all your contributions have been recognized by other Committee members. Yes, you can apply to be a member of the Linkis Committee, and other Committee members will vote together to decide whether to allow you to join in, and if unanimously approved, you will become a member of the Linkis Committee.
 
 **3.2.2 Committee members' rights
 
