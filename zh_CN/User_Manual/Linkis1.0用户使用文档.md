@@ -11,7 +11,7 @@
 <dependency>
   <groupId>com.webank.wedatasphere.linkis</groupId>
   <artifactId>linkis-computation-client</artifactId>
-  <version>1.0.0-RC1</version>
+  <version>1.0.0</version>
 </dependency>
 ```
 
@@ -244,7 +244,7 @@ public class JavaClientTest {
             //添加本次执行所依赖的的标签:EngineTypeLabel/UserCreatorLabel/EngineRunTypeLabel
             labels.put(LabelKeyConstant.ENGINE_TYPE_KEY, "hive-1.2.1");
             labels.put(LabelKeyConstant.USER_CREATOR_TYPE_KEY, "hadoop-IDE");
-            labels.put(LabelKeyConstant.ENGINE_RUN_TYPE_KEY, "hql");
+            labels.put(LabelKeyConstant.CODE_TYPE_KEY, "hql");
             //指定source
             Map<String, Object> source = new HashMap<String, Object>();
             source.put(TaskConstant.SCRIPTPATH, "LinkisClient-test");
@@ -335,7 +335,7 @@ object ScalaClientTest {
       //添加本次执行所依赖的的标签，如engineLabel
       labels.put(LabelKeyConstant.ENGINE_TYPE_KEY, "hive-1.2.1")
       labels.put(LabelKeyConstant.USER_CREATOR_TYPE_KEY, "hadoop-IDE")
-      labels.put(LabelKeyConstant.ENGINE_RUN_TYPE_KEY, "hql")
+      labels.put(LabelKeyConstant.CODE_TYPE_KEY, "hql")
       //指定source
       val source: util.Map[String, Any] = new util.HashMap[String, Any]
       source.put(TaskConstant.SCRIPTPATH, "LinkisClient-test")
