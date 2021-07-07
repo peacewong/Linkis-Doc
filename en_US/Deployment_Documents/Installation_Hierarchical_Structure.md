@@ -32,12 +32,29 @@ The simplified directory structure of Linkis1.0 is as follows.
 │ ├── install-io.sh ── Used for dependency replacement during installation
 │ └── install.sh ── Main script of Linkis installation
 ├── conf ──configuration directory
-│ ├── db.sh ──mysql database configuration
-│ ├── linkis-computation-governance ──Compute governance module configuration
-│ ├── linkis-env.sh ──Linkis dependent environment configuration
-│ ├── linkis.properties ──Linkis execution environment configuration
-│ ├── linkis-public-enhancements ──Public enhancement service module configuration
-│ └── linkis-spring-cloud-services ──SpringCloud environment configuration
+│ ├── application-eureka.yml 
+│ ├── application-linkis.yml    ──Microservice general yml
+│ ├── linkis-cg-engineconnmanager-io.properties
+│ ├── linkis-cg-engineconnmanager.properties
+│ ├── linkis-cg-engineplugin.properties
+│ ├── linkis-cg-entrance.properties
+│ ├── linkis-cg-linkismanager.properties
+│ ├── linkis-computation-governance
+│ │   └── linkis-client
+│ │       └── linkis-cli
+│ │           ├── linkis-cli.properties
+│ │           └── log4j2.xml
+│ ├── linkis-env.sh   ──linkis environment properties
+│ ├── linkis-et-validator.properties
+│ ├── linkis-mg-gateway.properties
+│ ├── linkis.properties  ──linkis global properties
+│ ├── linkis-ps-bml.properties
+│ ├── linkis-ps-cs.properties
+│ ├── linkis-ps-datasource.properties
+│ ├── linkis-ps-publicservice.properties
+│ ├── log4j2.xml
+│ ├── proxy.properties(Optional)
+│ └── token.properties(Optional)
 ├── db ──database DML and DDL file directory
 │ ├── linkis\_ddl.sql ──Database table definition SQL
 │ ├── linkis\_dml.sql ──Database table initialization SQL
@@ -49,9 +66,39 @@ The simplified directory structure of Linkis1.0 is as follows.
 │ ├── linkis-public-enhancements ──lib directory of public enhancement services
 │ └── linkis-spring-cloud-services ──SpringCloud lib directory
 ├── logs ──log directory
-│ ├── linkis-computation-governance ──Computational governance module all microservice logs
-│ ├── linkis-public-enhancements ──All microservice logs of public enhancement modules
-│ └── linkis-spring-cloud-services ──SpringCloud module microservice log
+│ ├── linkis-cg-engineconnmanager-gc.log
+│ ├── linkis-cg-engineconnmanager.log
+│ ├── linkis-cg-engineconnmanager.out
+│ ├── linkis-cg-engineplugin-gc.log
+│ ├── linkis-cg-engineplugin.log
+│ ├── linkis-cg-engineplugin.out
+│ ├── linkis-cg-entrance-gc.log
+│ ├── linkis-cg-entrance.log
+│ ├── linkis-cg-entrance.out
+│ ├── linkis-cg-linkismanager-gc.log
+│ ├── linkis-cg-linkismanager.log
+│ ├── linkis-cg-linkismanager.out
+│ ├── linkis-et-validator-gc.log
+│ ├── linkis-et-validator.log
+│ ├── linkis-et-validator.out
+│ ├── linkis-mg-eureka-gc.log
+│ ├── linkis-mg-eureka.log
+│ ├── linkis-mg-eureka.out
+│ ├── linkis-mg-gateway-gc.log
+│ ├── linkis-mg-gateway.log
+│ ├── linkis-mg-gateway.out
+│ ├── linkis-ps-bml-gc.log
+│ ├── linkis-ps-bml.log
+│ ├── linkis-ps-bml.out
+│ ├── linkis-ps-cs-gc.log
+│ ├── linkis-ps-cs.log
+│ ├── linkis-ps-cs.out
+│ ├── linkis-ps-datasource-gc.log
+│ ├── linkis-ps-datasource.log
+│ ├── linkis-ps-datasource.out
+│ ├── linkis-ps-publicservice-gc.log
+│ ├── linkis-ps-publicservice.log
+│ └── linkis-ps-publicservice.out
 ├── pid ──Process ID of all microservices
 │ ├── linkis\_cg-engineconnmanager.pid ──EngineConnManager microservice
 │ ├── linkis\_cg-engineconnplugin.pid ──EngineConnPlugin microservice

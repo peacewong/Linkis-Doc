@@ -115,6 +115,25 @@ vim pom.xml
 
 ```
 
+**Please note: If your hadoop version is hadoop3, you need to modify the pom file of linkis-hadoop-common**
+Because under hadoop2.8, hdfs-related classes are in the hadoop-hdfs module, but in hadoop 3.X the corresponding classes are moved to the module hadoop-hdfs-client, you need to modify this file:
+
+```
+pom:Linkis/linkis-commons/linkis-hadoop-common/pom.xml
+Modify the dependency hadoop-hdfs to hadoop-hdfs-client:
+  <dependency>
+             <groupId>org.apache.hadoop</groupId>
+             <artifactId>hadoop-hdfs</artifactId> <!-- Replace this line with <artifactId>hadoop-hdfs-client</artifactId>-->
+             <version>${hadoop.version}</version>
+             ...
+  Modify hadoop-hdfs to:
+   <dependency>
+             <groupId>org.apache.hadoop</groupId>
+             <artifactId>hadoop-hdfs-client</artifactId>
+             <version>${hadoop.version}</version>
+             ...
+```
+
 #### How to modify Spark, Hive versions that Linkis relies on?
 
 Here's an example of changing the version of Spark. Go to the directory where the Spark engine is located and manually modify the Spark version information of the pom.xml file as follows:

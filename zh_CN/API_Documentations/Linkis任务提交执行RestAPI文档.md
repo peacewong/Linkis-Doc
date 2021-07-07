@@ -101,7 +101,7 @@
 
 - 请求参数fromLine是指从第几行开始获取，size是指该次请求获取几行日志
 
-- 返回示例，其中返回的fromLine需要下次日志请求的参数
+- 返回示例，其中返回的fromLine需要作为下次请求该接口的参数
 
 ```json
 {
@@ -156,9 +156,7 @@
 
 - 接口 `/api/rest_j/v1/entrance/${execID}/kill`
 
-- 提交方式 `POST`
-
-- 返回示例，其中返回的fromLine需要下次日志请求的参数
+- 提交方式 `GET`
 
 ```json
 {

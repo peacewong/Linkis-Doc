@@ -2,7 +2,7 @@
 
 ## Notes
 
-If you are new to Linkis, you can ignore this chapter, however, if you are already a Linkis user,  we recommend you reading the following article before installing or upgrading: Brief introduction of the difference between Linkis1.0 and Linkis0.X.
+If you are new to Linkis, you can ignore this chapter, however, if you are already a Linkis user,  we recommend you reading the following article before installing or upgrading: [Brief introduction of the difference between Linkis1.0 and Linkis0.X](https://github.com/WeBankFinTech/Linkis-Doc/blob/master/en_US/Architecture_Documents/DifferenceBetween1.0%260.x.md).
 
 Please note: Apart from the four EngineConnPlugins included in the Linkis1.0 installation package by default: Python/Shell/Hive/Spark. You can manually install other types of engines such as JDBC depending on your own needs. For details, please refer to EngineConnPlugin installation documents.
 
@@ -34,9 +34,9 @@ The following is the dependency information for each engine.
 | Hive        | Hadoop and Hive Environment |                                                              |
 | Spark       | Hadoop/Hive/Spark           |                                                              |
                                                          
-**Requirement: At least 4G memory is required to install Linkis. **
+**Requirement: At least 3G memory is required to install Linkis. **
                                                          
-The default JVM heap memory of each microservice is 512M, and the heap memory of each microservice can be adjusted uniformly by modifying `SERVER_HEAP_SIZE`. as follows:
+The default JVM heap memory of each microservice is 512M, and the heap memory of each microservice can be adjusted uniformly by modifying `SERVER_HEAP_SIZE`.If your computer resources are small, we suggest to modify this parameter to 128M. as follows:
 
 ```bash
     vim ${LINKIS_HOME}/config/linkis-env.sh
@@ -44,7 +44,7 @@ The default JVM heap memory of each microservice is 512M, and the heap memory of
 
 ```bash
     # java application default jvm memory.
-    export SERVER_HEAP_SIZE="512M"
+    export SERVER_HEAP_SIZE="128M"
 ```
 
 ----
@@ -118,13 +118,13 @@ Download the latest installation package from the Linkis release. ([Click here t
 Decompress the installation package to the installation directory and modify the configuration of the decompressed file.
 
 ```bash   
-    tar -xvf  wedatasphere-linkis-x.x.x-dist.tar.gz
+    tar -xvf  wedatasphere-linkis-x.x.x-combined-package-dist.tar.gz
 ```
 
 ### d. Basic configuration modification(Do not rely on HDFS)
 
 ```bash
-    vi conf/linkis-env.sh
+    vi config/linkis-env.sh
 ```
 
 ```properties
@@ -145,7 +145,7 @@ Decompress the installation package to the installation directory and modify the
 ### e. Basic configuration modification(Rely on HDFS/Hive/Spark)
 
 ```bash
-     vi conf/linkis-env.sh
+     vi config/linkis-env.sh
 ```
 
 ```properties
@@ -183,7 +183,7 @@ Decompress the installation package to the installation directory and modify the
 ### f. Modify the database configuration
 
 ```bash   
-    vi conf/db.sh 
+    vi config/db.sh 
 ```
 
 ```properties    
@@ -229,7 +229,7 @@ If there is an error message, check the specific reason for that error or refer 
 Run the following commands on the installation directory to start all services.
 
 ```bash  
-  sh sbin/linkis-start-all.sh> start.log 2>start_error.log
+  sh sbin/linkis-start-all.sh
 ```
 
 (2). Check if start successfully 
@@ -241,4 +241,6 @@ Open http://${EUREKA_INSTALL_IP}:${EUREKA_PORT} on the browser and check if serv
 If you have not specified EUREKA_INSTALL_IP and EUREKA_INSTALL_IP in config.sh, then the HTTP address is http://127.0.0.1:20303
 
 As shown in the figure below, if all of the following micro-services are registered on theEureka, it means that they've started successfully and are able to work.
+
+![Linkis1.0_Eureka](../Images/deployment/Linkis1.0_combined_eureka.png)
 

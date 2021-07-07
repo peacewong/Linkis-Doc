@@ -1,8 +1,11 @@
 ## 注意事项
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**如果您是首次接触并使用Linkis，您可以忽略该章节；如果您已经是 Linkis 的使用用户，安装或升级前建议先阅读：[Linkis1.0 与 Linkis0.X 的区别简述](https://github.com/WeBankFinTech/Linkis/wiki/Linkis1.0%E4%B8%8ELinkis0.X%E7%9A%84%E5%8C%BA%E5%88%AB%E7%AE%80%E8%BF%B0)**。
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**如果您是首次接触并使用Linkis，您可以忽略该章节；如果您已经是 Linkis 的使用用户，安装或升级前建议先阅读：[Linkis1.0 与 Linkis0.X 的区别简述](https://github.com/WeBankFinTech/Linkis-Doc/blob/master/zh_CN/Architecture_Documents/Linkis1.0%E4%B8%8ELinkis0.X%E7%9A%84%E5%8C%BA%E5%88%AB%E7%AE%80%E8%BF%B0.md)**。
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;请注意：除了 Linkis1.0 安装包默认已经包含的：Python/Shell/Hive/Spark四个EngineConnPlugin以外，如果大家有需要，可以手动安装如 JDBC 引擎等类型的其他引擎，具体请参考 [EngineConnPlugin引擎插件安装文档](https://github.com/WeBankFinTech/Linkis/wiki/EngineConnPlugin%E5%BC%95%E6%93%8E%E6%8F%92%E4%BB%B6%E5%AE%89%E8%A3%85%E6%96%87%E6%A1%A3)。
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;请注意：除了 Linkis1.0 安装包默认已经包含的：Python/Shell/Hive/Spark四个EngineConnPlugin以外，如果大家有需要，可以手动安装如 JDBC 引擎等类型的其他引擎，具体请参考 [EngineConnPlugin引擎插件安装文档](https://github.com/WeBankFinTech/Linkis-Doc/blob/master/zh_CN/Deployment_Documents/EngineConnPlugin%E5%BC%95%E6%93%8E%E6%8F%92%E4%BB%B6%E5%AE%89%E8%A3%85%E6%96%87%E6%A1%A3.md)。
+
+**Linkis Docker镜像**  
+[Linkis 0.10.0 Docker](https://hub.docker.com/repository/docker/wedatasphere/linkis)
 
 Linkis1.0 默认已适配的引擎列表如下：
 
@@ -32,9 +35,9 @@ Linkis1.0 默认已适配的引擎列表如下：
 | Hive| 依赖Hadoop和Hive环境 |  |
 | Spark| 依赖Hadoop/Hive/Spark |  |
 
-**要求：安装Linkis需要至少4G内存。** 
+**要求：安装Linkis需要至少3G内存。**
 
-默认每个微服务JVM堆内存为512M，可以通过修改`SERVER_HEAP_SIZE`来统一调整每个微服务的堆内存。如下：
+默认每个微服务JVM堆内存为512M，可以通过修改`SERVER_HEAP_SIZE`来统一调整每个微服务的堆内存，如果您的服务器资源较少，我们建议修改该参数为128M。如下：
 
 ```bash
     vim ${LINKIS_HOME}/config/linkis-env.sh
@@ -42,7 +45,7 @@ Linkis1.0 默认已适配的引擎列表如下：
 
 ```bash
     # java application default jvm memory.
-    export SERVER_HEAP_SIZE="512M"
+    export SERVER_HEAP_SIZE="128M"
 ```
 
 ----
@@ -99,7 +102,7 @@ Linkis1.0 默认已适配的引擎列表如下：
     export HIVE_CONF_DIR=/appcom/config/hive-config
     #Spark
     export SPARK_HOME=/appcom/Install/spark
-    export SPARK_CONF_DIR=/appcom/config/spark-config/spark-submit
+    export SPARK_CONF_DIR=/appcom/config/spark-config/
     export PYSPARK_ALLOW_INSECURE_GATEWAY=1  # Pyspark必须加的参数
 ```
 
@@ -116,13 +119,13 @@ Linkis1.0 默认已适配的引擎列表如下：
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;先解压安装包到安装目录，并对解压后的文件进行配置修改。
 
 ```bash   
-    tar -xvf  wedatasphere-linkis-x.x.x-dist.tar.gz
+    tar -xvf  wedatasphere-linkis-x.x.x-combined-package-dist.tar.gz
 ```
       
 ### d. 不依赖HDFS的基础配置修改
 
 ```bash
-    vi conf/linkis-env.sh
+    vi config/linkis-env.sh
 ```
         
 ```properties
@@ -132,9 +135,8 @@ Linkis1.0 默认已适配的引擎列表如下：
     LINKIS_INSTALL_HOME=/appcom/Install/Linkis    # 指定安装目录
     WORKSPACE_USER_ROOT_PATH=file:///tmp/hadoop    # 指定用户根目录，一般用于存储用户的脚本文件和日志文件等，是用户的工作空间。
     RESULT_SET_ROOT_PATH=file:///tmp/linkis   # 结果集文件路径，用于存储Job的结果集文件
-	ENGINECONN_ROOT_PATH=/appcom/tmp #存放ECP的安装路径，需要部署用户有写权限的本地目录
+    ENGINECONN_ROOT_PATH=/appcom/tmp #存放ECP的安装路径，需要部署用户有写权限的本地目录
     ENTRANCE_CONFIG_LOG_PATH=file:///tmp/linkis/  #ENTRANCE的日志路径
-
     ## LDAP配置，默认Linkis只支持部署用户登录，如果需要支持多用户登录可以使用LDAP，需要配置以下参数：
     #LDAP_URL=ldap://localhost:1389/ 
     #LDAP_BASEDN=dc=webank,dc=com
@@ -142,7 +144,7 @@ Linkis1.0 默认已适配的引擎列表如下：
 ### e. 依赖HDFS/Hive/Spark的基础配置修改
 
 ```bash
-     vi conf/linkis-env.sh
+     vi config/linkis-env.sh
 ```
         
 ```properties
@@ -150,11 +152,11 @@ Linkis1.0 默认已适配的引擎列表如下：
     deployUser=hadoop      #指定部署用户
     WORKSPACE_USER_ROOT_PATH=file:///tmp/hadoop    # 指定用户根目录，一般用于存储用户的脚本文件和日志文件等，是用户的工作空间。
     RESULT_SET_ROOT_PATH=hdfs:///tmp/linkis   # 结果集文件路径，用于存储Job的结果集文件
-	ENGINECONN_ROOT_PATH=/appcom/tmp #存放ECP的安装路径，需要部署用户有写权限的本地目录
+    ENGINECONN_ROOT_PATH=/appcom/tmp #存放ECP的安装路径，需要部署用户有写权限的本地目录
     ENTRANCE_CONFIG_LOG_PATH=hdfs:///tmp/linkis/  #ENTRANCE的日志路径
 
     #因为1.0支持多Yarn集群，使用到Yarn队列资源的一定需要配置YARN_RESTFUL_URL
- 	YARN_RESTFUL_URL=http://127.0.0.1:8088  #Yarn的ResourceManager的地址
+    YARN_RESTFUL_URL=http://127.0.0.1:8088  #Yarn的ResourceManager的地址
 
     # 如果您想配合Scriptis一起使用，CDH版的Hive，还需要配置如下参数（社区版Hive可忽略该配置）
     HIVE_META_URL=jdbc://...   # HiveMeta元数据库的URL
@@ -180,7 +182,7 @@ Linkis1.0 默认已适配的引擎列表如下：
 ### f. 修改数据库配置 
 
 ```bash   
-    vi conf/db.sh 
+    vi config/db.sh 
 ```
             
 ```properties    
@@ -211,11 +213,11 @@ Linkis1.0 默认已适配的引擎列表如下：
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**第一次安装**必须选是。
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**请注意：如果您是升级已有环境的 Linkis0.X 到 Linkis1.0，请不要直接选是，请先参考 [Linkis1.0升级指南](https://github.com/WeBankFinTech/Linkis/wiki/Linkis%E4%BB%8E0.X%E5%8D%87%E7%BA%A7%E5%88%B01.0%E6%8C%87%E5%8D%97)**。
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**请注意：如果您是升级已有环境的 Linkis0.X 到 Linkis1.0，请不要直接选是，请先参考 [Linkis1.0升级指南](https://github.com/WeBankFinTech/Linkis-Doc/blob/master/zh_CN/Upgrade_Documents/Linkis%E4%BB%8E0.X%E5%8D%87%E7%BA%A7%E5%88%B01.0%E6%8C%87%E5%8D%97.md)**。
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**请注意：如果您是升级已有环境的 Linkis0.X 到 Linkis1.0，请不要直接选是，请先参考 [Linkis1.0升级指南](https://github.com/WeBankFinTech/Linkis/wiki/Linkis%E4%BB%8E0.X%E5%8D%87%E7%BA%A7%E5%88%B01.0%E6%8C%87%E5%8D%97)**。
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**请注意：如果您是升级已有环境的 Linkis0.X 到 Linkis1.0，请不要直接选是，请先参考 [Linkis1.0升级指南](https://github.com/WeBankFinTech/Linkis-Doc/blob/master/zh_CN/Upgrade_Documents/Linkis%E4%BB%8E0.X%E5%8D%87%E7%BA%A7%E5%88%B01.0%E6%8C%87%E5%8D%97.md)**。
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**请注意：如果您是升级已有环境的 Linkis0.X 到 Linkis1.0，请不要直接选是，请先参考 [Linkis1.0升级指南](https://github.com/WeBankFinTech/Linkis/wiki/Linkis%E4%BB%8E0.X%E5%8D%87%E7%BA%A7%E5%88%B01.0%E6%8C%87%E5%8D%97)**。
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**请注意：如果您是升级已有环境的 Linkis0.X 到 Linkis1.0，请不要直接选是，请先参考 [Linkis1.0升级指南](https://github.com/WeBankFinTech/Linkis-Doc/blob/master/zh_CN/Upgrade_Documents/Linkis%E4%BB%8E0.X%E5%8D%87%E7%BA%A7%E5%88%B01.0%E6%8C%87%E5%8D%97.md)**。
 
 ### 3. 是否安装成功：
 
@@ -223,7 +225,7 @@ Linkis1.0 默认已适配的引擎列表如下：
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;如果有错误信息，可以查看具体报错原因。
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;您也可以通过查看我们的[常见问题](https://github.com/WeBankFinTech/Linkis/wiki/%E9%83%A8%E7%BD%B2%E5%92%8C%E7%BC%96%E8%AF%91%E9%97%AE%E9%A2%98%E6%80%BB%E7%BB%93)，获取问题的解答。
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;您也可以通过查看我们的[常见问题](https://docs.qq.com/doc/DSGZhdnpMV3lTUUxq)，获取问题的解答。
 
 ### 4. 快速启动Linkis
 
@@ -232,7 +234,7 @@ Linkis1.0 默认已适配的引擎列表如下：
   在安装目录执行以下命令，启动所有服务：    
 
 ```bash  
-  sh sbin/linkis-start-all.sh> start.log 2>start_error.log
+  sh sbin/linkis-start-all.sh
 ```
         
 #### (2)、查看是否启动成功
@@ -245,5 +247,10 @@ Linkis1.0 默认已适配的引擎列表如下：
     
   如下图，如您的Eureka主页出现以下微服务，则表示服务都启动成功，可以正常对外提供服务了：
 
+  默认会启动8个Linkis微服务，其中图下linkis-cg-engineconn服务为运行任务才会启动
    
-![Linkis1.0_Eureka](https://github.com/WeBankFinTech/Linkis/blob/dev-1.0.0/images/zh_CN/Linkis1.0/installation/Linkis1.0-services-list.png)
+![Linkis1.0_Eureka](../Images/deployment/Linkis1.0_combined_eureka.png)
+
+#### (3)、查看服务是否正常
+1. 服务启动成功后您可以通过，安装前端管理台，来检验服务的正常性，[点击跳转管理台安装文档](https://github.com/WeBankFinTech/Linkis-Doc/blob/master/zh_CN/Deployment_Documents/%E5%89%8D%E7%AB%AF%E7%AE%A1%E7%90%86%E5%8F%B0%E5%AE%89%E8%A3%85%E6%96%87%E6%A1%A3.md)
+2. 您也可以通过Linkis用户手册来测试Linis是否能正常运行任务，[点击跳转用户手册](https://github.com/WeBankFinTech/Linkis-Doc/blob/master/zh_CN/User_Manual/README.md)
