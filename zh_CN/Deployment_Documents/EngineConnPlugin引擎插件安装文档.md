@@ -7,16 +7,17 @@
 &nbsp;&nbsp;&nbsp;&nbsp;在linkis1.0以后，引擎是由EngineConnManager进行管理的，引擎插件（EngineConnPlugin）支持实时生效。
 
 为了方便 EngineConnManager 能够通过标签加载到对应的引擎插件，需要按照如下目录结构进行打包(以hive为例)：
-**请注意： 因为现在标签是通过-来进行拆分值的所以版本里面不能出现-如果出现可以通过用其他符号代替，比如engineType：hvie-cdh-1.2.1，会拆分错，您可以直接使用这个：hive-1.2.1，**
+
+**请注意： 因为现在标签是通过-来进行拆分值的所以版本里面不能出现-如果出现可以通过用其他符号代替，比如engineType：hvie-cdh-2.3.3，会拆分错，您可以直接使用这个：hive-2.3.3，**
 ```
 hive:引擎主目录，必须为引擎的名字
     └── dist  # 引擎启动需要的依赖和配置，引擎不同的版本需要在该目录防止对应的版本目录
-      └── v1.2.1 #必须以v开头加上引擎版本号1.2.1
+      └── v2.3.3 #必须以v开头加上引擎版本号2.3.3
            └── conf # 引擎需要的配置文件目录
            └── lib  # 引擎插件需要的依赖包
     └── plugin #引擎插件目录，该目录用于引擎管理服务封装引擎的启动命令和资源申请
-      └── 1.2.1 # 引擎版本,没有V开头
-        └── linkis-engineplugin-hive-1.0.0-RC1.jar  #引擎模块包（只需要放置单独的引擎包）
+      └── 2.3.3 # 引擎版本,没有V开头
+        └── linkis-engineplugin-hive-1.0.0.jar  #引擎模块包（只需要放置单独的引擎包）
 ```
 
 如果您是新增引擎，你可以参考hive的assembly配置方式，源码目录：`linkis-engineconn-plugins/engineconn-plugins/hive/src/main/assembly/distribution.xml`
@@ -65,7 +66,7 @@ ${LINKIS_HOME}/lib/linkis-engineconn-plugins/plugin:
 
 ```
 linkis_configuration_config_key:  插入引擎的配置参数的key和默认values
-linkis_manager_label：插入引擎label如：hive-1.2.1
+linkis_manager_label：插入引擎label如：hive-2.3.3
 linkis_configuration_category： 插入引擎的目录关联关系
 linkis_configuration_config_value： 插入引擎需要展示的配置
 ```
